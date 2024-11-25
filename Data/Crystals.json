@@ -1,0 +1,78 @@
+{
+    "Rubat":{
+        "base": ["Attack Modifier: +1", "Damage: Energy,1"],
+        "HoG":["Attack Modifier: +2", "Damage: Energy,2"],
+        "MoF":["Regeneration Force Points: 3"]
+    },
+    "Damind":{
+        "base": ["Attack Modifier: +1"],
+        "HoG": ["Attack Modifier: +3", "Damage: Energy,2"],
+        "MoF": ["Attack Modifier: +1", "Damage: Energy,1", "Regeneration Force Points: 2"]
+    },
+    "Eralam":{
+        "base": ["Attack Modifier: +2", "Damage: Energy,2"],
+        "HoG": ["Attack Modifier: +3", "Damage: Energy,3"],
+        "MoF": ["Attack Modifier: +3", "Damage: Energy,3"]
+    },
+    "Sapith":{
+        "base": ["Attack Modifier: +2", "Damage: Energy,3"],
+        "HoG": ["Attack Modifier: +3", "Damage: Energy,4"],
+        "MoF": ["Attack Modifier: +3", "Damage: Energy,4"]
+    },
+    "Nextor":{
+        "base": ["Attack Modifier: +1", "Keen"],
+        "HoG": ["Attack Modifier: +1", "Damage: Energy,1"],
+        "MoF": ["Attack Modifier: +1", "Damage: Energy,1"]
+    },
+    "Opila":{
+        "base": ["Damage: Energy,3", "Massive Criticals: +2-12"],
+        "HoG": ["Attack Modifier: +2", "Damage: Energy,3", "Massive Criticals: +2-12"],
+        "MoF": ["Attack Modifier: +2", "Damage: Energy,3", "Massive Criticals: +2-12"]
+    },
+    "Jenruax":{
+        "base": ["Blaster Bolt Deflection: +5", "Damage: Energy,2"],
+        "HoG": ["Blaster Bolt Deflection: +7", "Damage: Energy,2"],
+        "MoF": ["Dexterity: +1", "Blaster Bold Deflection: +5", "Damage: Energy,2"]
+    },
+    "Phond":{
+        "base": ["Damage Bonus: +1-6 Physical (piercing)"],
+        "HoG": ["Damage Bonus: +1-10 Physical (slashing"],
+        "MoF": ["Damage Bonus: +1-10 Physical (slashing)"]
+    },
+    "Luxum":{
+        "base": ["Attack Modifier: +2", "Energy: +1-6 vs. Droid"],
+        "HoG": ["Attack Modifier: +3", "Ion: +2-12 vs. Droid"],
+        "MoF": ["Attack Modifier: +3", "Ion: +2-12 vs. Droid"]
+    },
+    "Firkrann":{
+        "base": ["Attack Modifier: +2", "Energy: +2-12 vs. Droid"],
+        "HoG": ["Attack Modifier: +3", "Ion: +3-18 vs. Droid"],
+        "MoF": ["Attack Modifier: +3", "Ion: +3-18 vs. Droid"]
+    },
+    "Bondar":{
+        "base": ["On Hit: Stun 25% chance, 6 seconds, DC 10 (Will)"],
+        "HoG": ["On Hit: Stun 25% chance, 6 seconds, DC 14 (Will)"],
+        "MoF": ["On Hit: Paralyze 25% chance, 6 seconds, DC 14 (Reflex)"]
+    },
+    "Sigil":{
+        "base": ["Attack Modifier: +1", "Damage: Energy,1-6"],
+        "HoG": ["Attack Modifier: +2", "Damage: Energy,1-8"],
+        "MoF": ["Attack Modifier: +2", "Damage: Energy,1-8"]
+    },
+    "Upari":{
+        "base": ["Attack Modifier: +3", "Damage: Energy,1-8"],
+        "HoG": ["Attack Modifier: +4", "Damage: Energy,2-12"],
+        "MoF": ["Attack Modifier: +2", "Damage: Energy,1-6", "Blaster Bold Deflection: +8"]
+    },
+    "Solari":{
+        "base": ["Restricted to: Light Side", "Attack Modifier: +3",
+                "Light Side: +1-8 vs. Dark Side", "Damage Bonus: +3 Physical (piercing)"],
+        "HoG": ["Attack Modifier: +2", "Damage: Energy,1-10", "Blaster Bolt Deflection: +4"],
+        "MoF": ["Attack Modifier: +4", "Damage: Energy,1-8", "Light Side: +2-12 vs. Dark Side"]
+    },
+    "Krayt Dragon Pearl":{
+        "base": ["Attack Modifier: +3", "Damage: Energy,2"],
+        "HoG": ["Attack Modifier: +8", "Damage: Energy,1-8"],
+        "MoF": ["Attack Modifier: +4", "Blaster Bold Deflection: +3"]
+    }
+}
