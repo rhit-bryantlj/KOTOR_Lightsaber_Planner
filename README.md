@@ -16,6 +16,8 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 ## Devlog
 - V1.0 released
 
+follow Development at https://www.youtube.com/@logeeman8
+
 ### Future Development
 - Allow User to Store and Delete Lightsaber Builds
 - Add option for User to have a second Lightsaber
