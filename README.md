@@ -7,9 +7,9 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 
 
 ## To Run
--Download the code as a zip
--CD to the top level directory
--make all
+- Download the code as a zip
+- CD to the top level directory
+- make all
 
 ## Devlog
 - V1.0 released
