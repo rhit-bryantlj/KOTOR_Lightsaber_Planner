@@ -1,5 +1,5 @@
 # KOTOR Lightsaber Planner (Command Line)
-## V1.0
+## V1.1
 ### See Devlog for future development plans
 
 ## Description
@@ -14,7 +14,10 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 5. ./main.exe
 
 ## Devlog
-- V1.0 released
+#### V1.0 released
+#### V1.1 Released
+- Updated to show crystal details
+- Added Max and Min value checking for Attributes
 
 follow Development at https://www.youtube.com/@logeeman8
 
@@ -25,7 +28,6 @@ follow Development at https://www.youtube.com/@logeeman8
 - Integrating the Crystal upgrades into the stats of Lightsaber directly
 - Make a function/user option to display single crystal effects instead of every loop
 - Make the Str and Dex Attributes place effect on lightsaber
-- integrate a guide on where to acquire each crystal
 
 ### Future of this Project
 - Create the app in a GUI to be more user friendly
