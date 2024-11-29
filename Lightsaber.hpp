@@ -18,7 +18,6 @@ enum ColorCrystal{
 
 class Lightsaber{
     LightsaberType saber_type;
-    Crystal crystal_1, crystal_2;
     ColorCrystal saber_color_crystal;
     int damage_min, damage_max, crit_min;
     bool balanced;
@@ -26,6 +25,7 @@ class Lightsaber{
     int crit_mult = 2;
 
     public:
+        Crystal crystal_1, crystal_2;
         Lightsaber(int saber_sel, int color_sel, int crystal1, int crystal2);
         void updateLightsaberType(int saber_sel);
         void updateColorCrystal(int color_sel);

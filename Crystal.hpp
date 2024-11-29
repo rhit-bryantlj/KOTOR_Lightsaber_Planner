@@ -29,7 +29,9 @@ class Crystal{
         Crystal();
         void updateCrystal(int select);
         void setStat(int choice);
+        std::string curString();
         void printStats(json crystal_data);
+        void printLocations(json crystal_data);
         int getVal();
     
     private:

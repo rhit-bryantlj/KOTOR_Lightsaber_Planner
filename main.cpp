@@ -12,27 +12,60 @@ using json = nlohmann::json;
 
 json crystal_data;
 
+/* Test
+Attribute < 8 on update single
+Attribute > 23 on update single
+Attribute < 8 on update all
+Attribute > 23 on update all
+Attrtributes > 83 on update all
+
+Print out crystal locations
+print out no crytal in slot for NO_Crystal
+verify crystal still works as intended after making public*/
+
 json getCrystalData() {
     std::ifstream crystal_file("Data/Crystals.json");
     json crystal_data = json::parse(crystal_file);
     return crystal_data;
 }
 
+bool attributeCheck(int attr[6]){
+    int sum = 0;
+    for(int i = 0; i < 6; i++){
+        if(attr[i] < 8 || attr[i] > 23){
+            std::cout << "Attribute out of possible bounds. Enter again\n";
+            return false;
+        }
+        sum += attr[i];
+    }
+    // Make this more of a complete check for the max possible stat points
+    // Considering the Point Cost restriction of Character Creation.
+    if(sum > 83){ 
+        std::cout << "User Attribute sum higher than possible max. Enter again\n";
+        return false;
+    }
+    return true;
+}
+
 Attributes initializeAttributes(){
     int attr[6];
-    std::cout << "Input your Attributes:\nStrength: ";
-    std::cin >> attr[0];
-    std::cout << "Dexterity: ";
-    std::cin >> attr[1];
-    std::cout << "Constitution: ";
-    std::cin >> attr[2];
-    std::cout << "Intelligence: ";
-    std::cin >> attr[3];
-    std::cout << "Wisdom: ";
-    std::cin >> attr[4];
-    std::cout << "Charisma: ";
-    std::cin >> attr[5];
-    std::cout << "\n";
+    bool fair_attr = false;
+    while(!fair_attr){
+        std::cout << "Input your Attributes:\nStrength: ";
+        std::cin >> attr[0];
+        std::cout << "Dexterity: ";
+        std::cin >> attr[1];
+        std::cout << "Constitution: ";
+        std::cin >> attr[2];
+        std::cout << "Intelligence: ";
+        std::cin >> attr[3];
+        std::cout << "Wisdom: ";
+        std::cin >> attr[4];
+        std::cout << "Charisma: ";
+        std::cin >> attr[5];
+        std::cout << "\n";
+        fair_attr = attributeCheck(attr);
+    }
 
     return Attributes(attr[0], attr[1], attr[2], attr[3], attr[4], attr[5]);
 }
@@ -113,8 +146,8 @@ int userOptionLoop(){
     int user_opt;
     std::cout << "User Options:\n(0) Swap Crystal 1     (1) Swap Crystal 2     (2) Swap Color Crystal\n";
     std::cout << "(3) Change Lightsaber Style     (4) Update Attribute(s)     (5) Show Attributes\n";
-    std::cout << "(6) Save Build (Future Implement)     (7) Load Build (Future Implement)     (8) Delete Build (Future Implement)\n";
-    std::cout << "(9) Exit\nSelect: ";
+    std::cout << "(6) Show Current Crystal Locations    (7) Save Build (Future Implement)\n";
+    std::cout << "(8) Load Build (Future Implement)     (9) Delete Build (Future Implement)     (10) Exit\nSelect: ";
     std::cin >> user_opt;
     std::cout << "\n\n";
     return user_opt;
@@ -130,7 +163,7 @@ int main() {
 
     int user_opt;
     int input;
-    while(user_opt != 9){
+    while(user_opt != 10){
         user_saber.showCurrentLightsaber(crystal_data);
 
         user_opt = userOptionLoop();
@@ -160,7 +193,11 @@ int main() {
                 user_attr.showAttributes();
                 break;
             case(6):
-                std::cout << "user choice unsupported\n\n";
+                std::cout << user_saber.crystal_1.curString() << ":\n";
+                user_saber.crystal_1.printLocations(crystal_data);
+                std::cout << user_saber.crystal_2.curString() << ":\n";
+                user_saber.crystal_2.printLocations(crystal_data);
+                std::cout << "\n";
                 break;
             case(7):
                 std::cout << "user choice unsupported\n\n";
@@ -169,6 +206,8 @@ int main() {
                 std::cout << "user choice unsupported\n\n";
                 break;
             case(9):
+                std::cout << "user choice unsupported\n\n";
+            case(10):
                 break;
             default:
                 std::cout << "user choice unsupported\n\n";
