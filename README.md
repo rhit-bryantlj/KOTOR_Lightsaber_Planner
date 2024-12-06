@@ -7,7 +7,7 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 
 
 ## To Run
-1. Download the code usin preferred method (zip, ssh, etc)
+1. Download the code using preferred method (zip, ssh, etc)
 2. unzip folder (if downloaded as zip)
 3. CD to the top level directory using linux env
 4. make all
@@ -18,16 +18,16 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 #### V1.1 Released
 - Updated to show crystal details
 - Added Max and Min value checking for Attributes
+- Show the Bonus from strength or dex for which stat is higher
 
 follow Development at https://www.youtube.com/@logeeman8
 
 ### Future Development
 - Allow User to Store and Delete Lightsaber Builds
 - Add option for User to have a second Lightsaber
-- Some fixes to prevent user from going out of bounds on attributes, etc
+- Complete fix to prevent user from going out of bounds on attributes by implementing the 30 point +4 calculation.
 - Integrating the Crystal upgrades into the stats of Lightsaber directly
 - Make a function/user option to display single crystal effects instead of every loop
-- Make the Str and Dex Attributes place effect on lightsaber
 
 ### Future of this Project
 - Create the app in a GUI to be more user friendly

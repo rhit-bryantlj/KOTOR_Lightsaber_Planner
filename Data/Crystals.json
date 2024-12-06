@@ -41,7 +41,7 @@
     "Jenruax":{
         "base": ["Blaster Bolt Deflection: +5", "Damage: Energy,2"],
         "HoG": ["Blaster Bolt Deflection: +7", "Damage: Energy,2"],
-        "MoF": ["Dexterity: +1", "Blaster Bold Deflection: +5", "Damage: Energy,2"],
+        "MoF": ["Dexterity: +1", "Blaster Bolt Deflection: +5", "Damage: Energy,2"],
         "Locations":["Manaan, Sith Base, Dark Jedi, 2", "Korriban, Shyrack Caves, Thalia May, 1"]
     },
     "Phond":{
@@ -78,7 +78,7 @@
     "Upari":{
         "base": ["Attack Modifier: +3", "Damage: Energy,1-8"],
         "HoG": ["Attack Modifier: +4", "Damage: Energy,2-12"],
-        "MoF": ["Attack Modifier: +2", "Damage: Energy,1-6", "Blaster Bold Deflection: +8"],
+        "MoF": ["Attack Modifier: +2", "Damage: Energy,1-6", "Blaster Bolt Deflection: +8"],
         "Locations":["Star Forge System, Temple Main Floor, Sith Master, 1"]
     },
     "Solari":{
@@ -91,7 +91,7 @@
     "Krayt Dragon Pearl":{
         "base": ["Attack Modifier: +3", "Damage: Energy,2"],
         "HoG": ["Attack Modifier: +8", "Damage: Energy,1-8"],
-        "MoF": ["Attack Modifier: +4", "Blaster Bold Deflection: +3"],
+        "MoF": ["Attack Modifier: +4", "Blaster Bolt Deflection: +3"],
         "Locations":["Tatooine, Eastern Dune Sea, Krayt Dragon, 1", "Tatooine, Eastern Dune Sea, Komad Fortuna, 1"]
     }
 }

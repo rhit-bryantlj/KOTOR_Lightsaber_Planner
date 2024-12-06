@@ -32,9 +32,12 @@ void Attributes::updateChar(int charisma){
 }
 
 void Attributes::showAttributes(){
-    for(auto i : attributes_){
-        std::cout << i.first << ": " << i.second << std::endl;
-    }
+    std::cout << "Str: " << attributes_["Str"] << "\n";
+    std::cout << "Dex: " << attributes_["Dex"] << "\n";
+    std::cout << "Con: " << attributes_["Con"] << "\n";
+    std::cout << "Int: " << attributes_["Int"] << "\n";
+    std::cout << "Wis: " << attributes_["Wis"] << "\n";
+    std::cout << "Char: " << attributes_["Char"] << "\n";
     std::cout << "\n";
 }
 
@@ -51,6 +54,14 @@ void Attributes::setAttributes(int str, int dex, int con, int intel, int wis, in
 
 std::map<std::string,int> Attributes::getAttributes(){
     return attributes_;
+}
+
+int Attributes::getStr(){
+    return attributes_["Str"];
+}
+
+int Attributes::getDex(){
+    return attributes_["Dex"];
 }
 
 void Attributes::updateAttribute(){

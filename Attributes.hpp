@@ -14,6 +14,8 @@ public:
     void showAttributes();
 
     std::map<std::string,int> getAttributes();
+    int getStr();
+    int getDex();
     void updateAttribute();
     
 private:

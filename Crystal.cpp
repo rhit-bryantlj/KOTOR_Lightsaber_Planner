@@ -1,4 +1,5 @@
 #include"Crystal.hpp"
+#include<array>
 
 Crystal::Crystal(){
     cur = NO_Crystal;
@@ -37,7 +38,7 @@ void Crystal::printLocations(json crystal_data){
 
 void Crystal::printStats(json crystal_data){
     std::cout << "Crystal: " << upgrade_strings[cur] << "\n";
-    // std::cout << upgrade_strings[cur] << " " << crystal_stat_choice << "\n";
+
     if(cur != NO_Crystal)
         std::cout << crystal_data[upgrade_strings[cur]][crystal_stat_choice].dump() << "\n";
 }

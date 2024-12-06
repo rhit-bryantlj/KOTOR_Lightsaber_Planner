@@ -24,8 +24,10 @@ enum UpgradeCrystal{
 
 class Crystal{
     UpgradeCrystal cur;
-    std::string crystal_stat_choice;
+    
     public:
+        std::string crystal_stat_choice;
+
         Crystal();
         void updateCrystal(int select);
         void setStat(int choice);

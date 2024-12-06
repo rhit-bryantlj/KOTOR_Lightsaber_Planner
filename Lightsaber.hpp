@@ -1,4 +1,5 @@
 #include"Crystal.hpp"
+#include"Attributes.hpp"
 
 enum LightsaberType{
     Single,
@@ -31,7 +32,8 @@ class Lightsaber{
         void updateColorCrystal(int color_sel);
         void updateCrystal1(int selected);
         void updateCrystal2(int selected);
-        void showCurrentLightsaber(json crystal_data);
+        void showCurrentLightsaber(json crystal_data, Attributes user_attr);
+        void calcStatsWithCrystals(json crystal_data);
     
     private:
         std::map<int, std::string> saber_strings = {

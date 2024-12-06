@@ -5,19 +5,13 @@
 #include<list>
 
 #include"nlohmann/json.hpp"
-#include"Attributes.hpp"
 #include"Lightsaber.hpp"
 
 using json = nlohmann::json;
 
 json crystal_data;
 
-/* Test
-Attribute < 8 on update single
-Attribute > 23 on update single
-Attribute < 8 on update all
-Attribute > 23 on update all
-Attrtributes > 83 on update all
+/* Tests
 
 Print out crystal locations
 print out no crytal in slot for NO_Crystal
@@ -149,7 +143,7 @@ int userOptionLoop(){
     std::cout << "(6) Show Current Crystal Locations    (7) Save Build (Future Implement)\n";
     std::cout << "(8) Load Build (Future Implement)     (9) Delete Build (Future Implement)     (10) Exit\nSelect: ";
     std::cin >> user_opt;
-    std::cout << "\n\n";
+    std::cout << "---------------------------------\n\n";
     return user_opt;
 }
 
@@ -164,7 +158,7 @@ int main() {
     int user_opt;
     int input;
     while(user_opt != 10){
-        user_saber.showCurrentLightsaber(crystal_data);
+        user_saber.showCurrentLightsaber(crystal_data, user_attr);
 
         user_opt = userOptionLoop();
         switch(user_opt){
@@ -193,6 +187,7 @@ int main() {
                 user_attr.showAttributes();
                 break;
             case(6):
+                std::cout << "Output: Planet, Location, Container, Num Available\n";
                 std::cout << user_saber.crystal_1.curString() << ":\n";
                 user_saber.crystal_1.printLocations(crystal_data);
                 std::cout << user_saber.crystal_2.curString() << ":\n";
