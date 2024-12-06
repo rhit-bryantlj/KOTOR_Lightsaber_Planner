@@ -1,6 +1,6 @@
 # KOTOR Lightsaber Planner (Command Line)
-## V1.1
-### See Devlog for future development plans
+## Current Build V1.1
+### See Devlog for past builds / future development plans
 
 ## Description
 This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Republic.
@@ -16,9 +16,12 @@ This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Rep
 ## Devlog
 #### V1.0 released
 #### V1.1 Released
-- Updated to show crystal details
-- Added Max and Min value checking for Attributes
+- Updated with option to show equipped crystal locations
+- Integrated crystal stats into Lightsaber output
+- Added basic Max and Min value checking for Attributes
 - Show the Bonus from strength or dex for which stat is higher
+- Updated some output to console
+- Fixed some typos in Crystals.json
 
 follow Development at https://www.youtube.com/@logeeman8
 
@@ -26,8 +29,6 @@ follow Development at https://www.youtube.com/@logeeman8
 - Allow User to Store and Delete Lightsaber Builds
 - Add option for User to have a second Lightsaber
 - Complete fix to prevent user from going out of bounds on attributes by implementing the 30 point +4 calculation.
-- Integrating the Crystal upgrades into the stats of Lightsaber directly
-- Make a function/user option to display single crystal effects instead of every loop
 
 ### Future of this Project
 - Create the app in a GUI to be more user friendly
