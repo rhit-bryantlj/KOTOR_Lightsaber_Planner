@@ -3,7 +3,7 @@
 ### See Devlog for past builds / future development plans
 
 ## Description
-This is a Lightsaber Planner for BioWare's 2003 Star Wars Knights of the Old Republic.
+This is a Lightsaber Planning Console App for BioWare's 2003 Star Wars Knights of the Old Republic. The intention of this app is to create a base to use Qt and create a GUI version once this is a fully fledged working version. If you prefer some fine text in your console, feel free to stick with this.
 
 
 ## To Run
