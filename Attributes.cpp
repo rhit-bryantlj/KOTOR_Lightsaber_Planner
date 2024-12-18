@@ -64,6 +64,22 @@ int Attributes::getDex(){
     return attributes_["Dex"];
 }
 
+int Attributes::getCon(){
+    return attributes_["Con"];
+}
+
+int Attributes::getInt(){
+    return attributes_["Int"];
+}
+
+int Attributes::getWis(){
+    return attributes_["Wis"];
+}
+
+int Attributes::getChar(){
+    return attributes_["Char"];
+}
+
 void Attributes::updateAttribute(){
     int user_in, attr_in;
     std::cout << "Select Attribute(s) to update:\n(0) Str   (1) Dex   (2) Con\n";

@@ -11,6 +11,21 @@ using json = nlohmann::json;
 
 json crystal_data;
 
+/*
+uint _64 = [dead space=23][up 2=5][up 1=5][color=3][saber typ=2][char=5][wis=5][int = 5][dex=5][con=5][str=5]
+*/
+
+const uint64_t STR_MASK = 0x1F;
+const uint64_t CON_MASk = 0x3E0;
+const uint64_t DEX_MASK = 0x7C00;
+const uint64_t INT_MASK = 0xF800;
+const uint64_t WIS_MASK = 0x1F00000;
+const uint64_t CHAR_MASK = 0x3E000000;
+const uint64_t S1_TYPE_MASK = 0xC0000000;
+const uint64_t S1_COLOR_MASK = 0x700000000;
+const uint64_t S1_CRYSTAL_1_MASK = 0xF800000000;
+const uint64_t S1_CRYSTAL_2_MASK = 0x1F0000000000;
+
 /* Tests
 
 Print out crystal locations
@@ -20,6 +35,7 @@ verify crystal still works as intended after making public*/
 json getCrystalData() {
     std::ifstream crystal_file("Data/Crystals.json");
     json crystal_data = json::parse(crystal_file);
+    crystal_file.close();
     return crystal_data;
 }
 
@@ -141,10 +157,111 @@ int userOptionLoop(){
     std::cout << "User Options:\n(0) Swap Crystal 1     (1) Swap Crystal 2     (2) Swap Color Crystal\n";
     std::cout << "(3) Change Lightsaber Style     (4) Update Attribute(s)     (5) Show Attributes\n";
     std::cout << "(6) Show Current Crystal Locations    (7) Save Build (Future Implement)\n";
-    std::cout << "(8) Load Build (Future Implement)     (9) Delete Build (Future Implement)     (10) Exit\nSelect: ";
+    std::cout << "(8) Load Build (Future Implement)     (9) Delete Build (Future Implement)\n";
+    std::cout << "(10) Show Saved Builds     (11) Exit\nSelect: ";
     std::cin >> user_opt;
     std::cout << "---------------------------------\n\n";
     return user_opt;
+}
+
+void show_saved_builds(){
+    std::ifstream save_file("Data/saves.json");
+    json saves_json = json::parse(save_file);
+    std::cout << saves_json.dump(1) << "\n";
+    save_file.close();
+}
+
+void save_cur_build(Attributes user_attr, Lightsaber user_saber){
+    uint64_t build = 0;
+
+    build += user_saber.crystal_2.getVal();
+
+    build = build << 5;
+    build += user_saber.crystal_1.getVal();
+
+    build = build << 3;
+    build += user_saber.getColorVal();
+
+    build = build << 2;
+    build += user_saber.getTypeVal();
+
+    build = build << 5;
+    build+= user_attr.getChar();
+
+    build = build << 5;
+    build += user_attr.getWis();
+    
+    build = build << 5;
+    build += user_attr.getInt();
+
+    build = build << 5;
+    build += user_attr.getDex();
+
+    build = build << 5;
+    build += user_attr.getCon();
+
+    build = build << 5;
+    build += user_attr.getStr();
+
+    std::string build_name;
+    std::cout << "Provide a name for the build to save:\n";
+    std::cin >> build_name;
+
+    std::ifstream save_file("Data/saves.json");
+    json saves_json = json::parse(save_file);
+    save_file.close();
+
+    int id = saves_json.size();
+
+    saves_json[std::to_string(id)] = {{"name", build_name}, {"value", build}};
+
+    std::ofstream save_write("Data/saves.json");
+    save_write << saves_json;
+    save_write.close();
+}
+
+void load_build(Attributes& user_attr, Lightsaber& user_saber){
+    std::cout << "Current saves: \n\n";
+    std::ifstream save_file("Data/saves.json");
+    json saves_json = json::parse(save_file);
+    save_file.close();
+    std::cout << saves_json.dump(1) << "\n";
+
+    int id;
+    std::cout << "Load which build? (Provide the int id)\n";
+    std::cin >> id;
+
+    int size = saves_json.size();
+    if(id > size || id < 0){
+        std::cout << "Given id is outside of range. Request denied\n\n";
+        return;
+    }
+
+    int str, dex, con, wis, intel, charis;
+}
+
+void delete_build(){
+    std::cout << "Current saves: \n\n";
+    std::ifstream save_file("Data/saves.json");
+    json saves_json = json::parse(save_file);
+    save_file.close();
+    std::cout << saves_json.dump(1) << "\n";
+
+    int id;
+    std::cout << "Delete which build? (Provide the int id)\n";
+    std::cin >> id;
+    
+    int size = saves_json.size();
+    if(id > size || id < 0){
+        std::cout << "Given id is outside of range. Request denied\n\n";
+        return;
+    }
+
+    saves_json.erase(std::to_string(id));
+    std::ofstream save_write("Data/saves.json");
+    save_write << saves_json;
+    save_write.close();
+    std::cout << "Request completed.\n\n";
 }
 
 int main() {
@@ -157,7 +274,7 @@ int main() {
 
     int user_opt;
     int input;
-    while(user_opt != 10){
+    while(user_opt != 11){
         user_saber.showCurrentLightsaber(crystal_data, user_attr);
 
         user_opt = userOptionLoop();
@@ -195,17 +312,20 @@ int main() {
                 std::cout << "\n";
                 break;
             case(7):
-                std::cout << "user choice unsupported\n\n";
+                save_cur_build(user_attr, user_saber);
                 break;
             case(8):
-                std::cout << "user choice unsupported\n\n";
+                load_build(user_attr, user_saber);
                 break;
             case(9):
-                std::cout << "user choice unsupported\n\n";
+                delete_build();
             case(10):
+                show_saved_builds();
+            case(11):
                 break;
             default:
                 std::cout << "user choice unsupported\n\n";
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max());
                 break;
         }
     }

@@ -29,7 +29,9 @@ class Lightsaber{
         Crystal crystal_1, crystal_2;
         Lightsaber(int saber_sel, int color_sel, int crystal1, int crystal2);
         void updateLightsaberType(int saber_sel);
+        int getTypeVal();
         void updateColorCrystal(int color_sel);
+        int getColorVal();
         void updateCrystal1(int selected);
         void updateCrystal2(int selected);
         void showCurrentLightsaber(json crystal_data, Attributes user_attr);

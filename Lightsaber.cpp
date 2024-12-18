@@ -40,6 +40,10 @@ void Lightsaber::updateLightsaberType(int saber_sel){
     };
 }
 
+int Lightsaber::getTypeVal(){
+    return saber_type;
+}
+
 void Lightsaber::updateColorCrystal(int color_sel){
     saber_color_crystal = static_cast<ColorCrystal>(color_sel);
 
@@ -55,6 +59,10 @@ void Lightsaber::updateColorCrystal(int color_sel){
         crystal_1.setStat(0);
         crystal_2.setStat(0);
     }
+}
+
+int Lightsaber::getColorVal(){
+    return saber_color_crystal;
 }
 
 void Lightsaber::updateCrystal1(int selected){

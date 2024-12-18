@@ -90,7 +90,7 @@
     },
     "Krayt Dragon Pearl":{
         "base": ["Attack Modifier: +3", "Damage: Energy,2"],
-        "HoG": ["Attack Modifier: +8", "Damage: Energy,1-8"],
+        "HoG": ["Attack Modifier: +3", "Damage: Energy,1-8"],
         "MoF": ["Attack Modifier: +4", "Blaster Bolt Deflection: +3"],
         "Locations":["Tatooine, Eastern Dune Sea, Krayt Dragon, 1", "Tatooine, Eastern Dune Sea, Komad Fortuna, 1"]
     }

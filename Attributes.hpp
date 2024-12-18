@@ -16,6 +16,10 @@ public:
     std::map<std::string,int> getAttributes();
     int getStr();
     int getDex();
+    int getCon();
+    int getWis();
+    int getInt();
+    int getChar();
     void updateAttribute();
     
 private:
