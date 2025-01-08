@@ -16,15 +16,15 @@ uint _64 = [dead space=23][up 2=5][up 1=5][color=3][saber typ=2][char=5][wis=5][
 */
 
 const uint64_t STR_MASK = 0x1F;
-const uint64_t CON_MASk = 0x3E0;
-const uint64_t DEX_MASK = 0x7C00;
-const uint64_t INT_MASK = 0xF800;
+const uint64_t DEX_MASk = 0x3E0;
+const uint64_t CON_MASK = 0x7C00;
+const uint64_t INT_MASK = 0xF8000;
 const uint64_t WIS_MASK = 0x1F00000;
 const uint64_t CHAR_MASK = 0x3E000000;
 const uint64_t S1_TYPE_MASK = 0xC0000000;
 const uint64_t S1_COLOR_MASK = 0x700000000;
-const uint64_t S1_CRYSTAL_1_MASK = 0xF800000000;
-const uint64_t S1_CRYSTAL_2_MASK = 0x1F0000000000;
+const uint64_t S1_CRYSTAL_1_MASK = 0x7800000000;
+const uint64_t S1_CRYSTAL_2_MASK = 0x78000000000;
 
 /* Tests
 
@@ -156,9 +156,8 @@ int userOptionLoop(){
     int user_opt;
     std::cout << "User Options:\n(0) Swap Crystal 1     (1) Swap Crystal 2     (2) Swap Color Crystal\n";
     std::cout << "(3) Change Lightsaber Style     (4) Update Attribute(s)     (5) Show Attributes\n";
-    std::cout << "(6) Show Current Crystal Locations    (7) Save Build (Future Implement)\n";
-    std::cout << "(8) Load Build (Future Implement)     (9) Delete Build (Future Implement)\n";
-    std::cout << "(10) Show Saved Builds     (11) Exit\nSelect: ";
+    std::cout << "(6) Show Current Crystal Locations    (7) Save Build      (8) Load Build\n";
+    std::cout << "(9) Delete Build    (10) Show Saved Builds     (11) Exit\nSelect: ";
     std::cin >> user_opt;
     std::cout << "---------------------------------\n\n";
     return user_opt;
@@ -176,7 +175,7 @@ void save_cur_build(Attributes user_attr, Lightsaber user_saber){
 
     build += user_saber.crystal_2.getVal();
 
-    build = build << 5;
+    build = build << 4;
     build += user_saber.crystal_1.getVal();
 
     build = build << 3;
@@ -195,10 +194,10 @@ void save_cur_build(Attributes user_attr, Lightsaber user_saber){
     build += user_attr.getInt();
 
     build = build << 5;
-    build += user_attr.getDex();
+    build += user_attr.getCon();
 
     build = build << 5;
-    build += user_attr.getCon();
+    build += user_attr.getDex();
 
     build = build << 5;
     build += user_attr.getStr();
@@ -216,9 +215,10 @@ void save_cur_build(Attributes user_attr, Lightsaber user_saber){
     saves_json[std::to_string(id)] = {{"name", build_name}, {"value", build}};
 
     std::ofstream save_write("Data/saves.json");
-    save_write << saves_json;
+    save_write << saves_json.dump(1);
     save_write.close();
 }
+
 
 void load_build(Attributes& user_attr, Lightsaber& user_saber){
     std::cout << "Current saves: \n\n";
@@ -238,6 +238,27 @@ void load_build(Attributes& user_attr, Lightsaber& user_saber){
     }
 
     int str, dex, con, wis, intel, charis;
+
+    uint64_t build = saves_json[std::to_string(id)]["value"];
+    std::cout << build << "\n";
+
+    str = (STR_MASK & build);
+    dex = (DEX_MASk & build) >> 5;
+    con = (CON_MASK & build) >> 10;
+    intel = (INT_MASK & build) >> 15;
+    wis = (WIS_MASK & build) >> 20; 
+    charis = (CHAR_MASK & build) >> 25;
+
+    user_attr.setAttributes(str,dex,con,intel,wis,charis);
+
+    std::cout << "saber type: " << ((S1_TYPE_MASK & build) >> 30) << ", saber color: " << ((S1_COLOR_MASK & build) >> 32) << "\n";
+    user_saber.updateLightsaberType((S1_TYPE_MASK & build) >> 30);
+    user_saber.updateColorCrystal((S1_COLOR_MASK & build) >> 32);
+    user_saber.updateCrystal1((S1_CRYSTAL_1_MASK & build) >> 35);
+    user_saber.updateCrystal2((S1_CRYSTAL_2_MASK & build) >> 39);
+
+    std::cout << "Current Attributes\n" << "---------------------------------\n\n";
+    user_attr.showAttributes();
 }
 
 void delete_build(){
@@ -257,6 +278,11 @@ void delete_build(){
         return;
     }
 
+    saves_json.erase(std::to_string(id));
+    while(id < size - 1){
+        saves_json[std::to_string(id)] = saves_json[std::to_string(id + 1)];
+        id++;
+    }
     saves_json.erase(std::to_string(id));
     std::ofstream save_write("Data/saves.json");
     save_write << saves_json;

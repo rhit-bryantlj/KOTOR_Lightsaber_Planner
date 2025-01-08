@@ -12,11 +12,12 @@ void Attributes::updateStr(int str){
     attributes_["Str"] = str;
 }
 
-void Attributes::updateCon(int con){
-    attributes_["Con"] = con;
-}
 void Attributes::updateDex(int dex){
     attributes_["Dex"] = dex;
+}
+
+void Attributes::updateCon(int con){
+    attributes_["Con"] = con;
 }
 
 void Attributes::updateInt(int intel){
