@@ -1,5 +1,5 @@
 # KOTOR Lightsaber Planner (Command Line)
-## Current Build V1.1
+## Current Build V1.2
 ### See Devlog for past builds / future development plans
 
 ## Description
@@ -9,12 +9,12 @@ This is a Lightsaber Planning Console App for BioWare's 2003 Star Wars Knights o
 ## To Run
 1. Download the code using preferred method (zip, ssh, etc)
 2. unzip folder (if downloaded as zip)
-3. CD to the top level directory using linux env
+3. CD to the top level directory using linux env/c++ build env
 4. make all
 5. ./main.exe
 
 ## Devlog
-#### V1.0 released
+#### V1.0 Released
 #### V1.1 Released
 - Updated with option to show equipped crystal locations
 - Integrated crystal stats into Lightsaber output
@@ -22,11 +22,13 @@ This is a Lightsaber Planning Console App for BioWare's 2003 Star Wars Knights o
 - Show the Bonus from strength or dex for which stat is higher
 - Updated some output to console
 - Fixed some typos in Crystals.json
+#### V1.2 Released
+- Added in Save, Load, and Delete functionality
+- Fixed bug causing infinite loop on string/character input
 
 follow Development at https://www.youtube.com/@logeeman8
 
 ### Future Development
-- Allow User to Store and Delete Lightsaber Builds
 - Add option for User to have a second Lightsaber
 - Complete fix to prevent user from going out of bounds on attributes by implementing the 30 point +4 calculation.
 
