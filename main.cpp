@@ -62,17 +62,41 @@ Attributes initializeAttributes(){
     bool fair_attr = false;
     while(!fair_attr){
         std::cout << "Input your Attributes:\nStrength: ";
-        std::cin >> attr[0];
+        while(!(std::cin >> attr[0])){
+            std::cout << "Not integer - Strength: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "Dexterity: ";
-        std::cin >> attr[1];
+        while(!(std::cin >> attr[1])){
+            std::cout << "Not integer - Dexterity: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "Constitution: ";
-        std::cin >> attr[2];
+        while(!(std::cin >> attr[2])){
+            std::cout << "Not integer - Constitution ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "Intelligence: ";
-        std::cin >> attr[3];
+        while(!(std::cin >> attr[3])){
+            std::cout << "Not integer - Intelligence ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "Wisdom: ";
-        std::cin >> attr[4];
+        while(!(std::cin >> attr[4])){
+            std::cout << "Not integer - Wisdom: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "Charisma: ";
-        std::cin >> attr[5];
+        while(!(std::cin >> attr[5])){
+            std::cout << "Not integer - Charisma: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "\n";
         fair_attr = attributeCheck(attr);
     }
@@ -94,10 +118,19 @@ int getUserCrystalOption(){
     std::cout << "(16) See Crystal Details\nSelect: ";
 
     while(user_opt < 0 || user_opt >= 16){
-        std::cin >> user_opt;
+        while(!(std::cin >> user_opt)){
+            std::cout << "Not integer: Select: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
 
         if(user_opt == 16){
             showCrystalDetails();
+            std::cout << "\nSelect upgrade crystal - ";
+            std::cout << "(0) No Crystal, (1) Rubat, (2) Damind\n(3) Eralam, (4) Sapith, (5) Nextor ";
+            std::cout << "(6) Opila, (7) Jenruax\n(8) Phond, (9) Luxum, (10) Firkrann ";
+            std::cout << "(11) Bondar, (12) Sigil\n(13) Upari, (14) Solari, (15) Krayt Dragon Pearl\n";
+            std::cout << "(16) See Crystal Details\nSelect: ";
             continue;
         }else if(user_opt < 0 || user_opt > 16){
             std::cout << "Invalid input option. Please select again\n";
@@ -113,7 +146,11 @@ int getUserSaberColor(){
     std::cout << "(4) Purple (5) Heart of Guardian, (6) Mantle of Force\n";
     while(color_sel < 0 || color_sel > 6){
         std::cout << "Select: ";
-        std::cin >> color_sel;
+        while(!(std::cin >> color_sel)){
+            std::cout << "Not integer: Select: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         std::cout << "\n";
         if(color_sel < 0 || color_sel > 6){
             std::cout << "Invalid input option. Please select again\n";
@@ -127,7 +164,11 @@ int getUserSaberType(){
     std::cout << "Select Saber Type - (0) Lightsaber, (1) Double-Bladed Lighsaber, (2) Short Lightsaber\n";
     while(saber_sel < 0 || saber_sel > 2){
         std::cout << "Select: ";
-        std::cin >> saber_sel;
+        while(!(std::cin >> saber_sel)){
+            std::cout << "Not integer: Select: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         
         if(saber_sel < 0 || saber_sel > 2){
             std::cout << "Invalid input option. Please select again\n";
@@ -158,7 +199,13 @@ int userOptionLoop(){
     std::cout << "(3) Change Lightsaber Style     (4) Update Attribute(s)     (5) Show Attributes\n";
     std::cout << "(6) Show Current Crystal Locations    (7) Save Build      (8) Load Build\n";
     std::cout << "(9) Delete Build    (10) Show Saved Builds     (11) Exit\nSelect: ";
-    std::cin >> user_opt;
+    while(!(std::cin >> user_opt)){
+        std::cout << "Error: user did not enter integer\nPrevious action cancelled.\nSelect: ";
+        //clear input
+        std::cin.clear();
+        //Discard input
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     std::cout << "---------------------------------\n\n";
     return user_opt;
 }
@@ -166,7 +213,7 @@ int userOptionLoop(){
 void show_saved_builds(){
     std::ifstream save_file("Data/saves.json");
     json saves_json = json::parse(save_file);
-    std::cout << saves_json.dump(1) << "\n";
+    std::cout << "Current Saves:\n" << saves_json.dump(1) << "\n\n";
     save_file.close();
 }
 
@@ -219,18 +266,24 @@ void save_cur_build(Attributes user_attr, Lightsaber user_saber){
     save_write.close();
 }
 
-
 void load_build(Attributes& user_attr, Lightsaber& user_saber){
-    std::cout << "Current saves: \n\n";
     std::ifstream save_file("Data/saves.json");
     json saves_json = json::parse(save_file);
     save_file.close();
+    if(saves_json.size() == NULL){
+        std::cout << "No current saves available.\n\n";
+        return;
+    }
+    std::cout << "Current saves: \n\n";
     std::cout << saves_json.dump(1) << "\n";
 
     int id;
     std::cout << "Load which build? (Provide the int id)\n";
-    std::cin >> id;
-
+    while(!(std::cin >> id)){
+        std::cout << "Not integer: Select: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     int size = saves_json.size();
     if(id > size || id < 0){
         std::cout << "Given id is outside of range. Request denied\n\n";
@@ -262,15 +315,23 @@ void load_build(Attributes& user_attr, Lightsaber& user_saber){
 }
 
 void delete_build(){
-    std::cout << "Current saves: \n\n";
     std::ifstream save_file("Data/saves.json");
     json saves_json = json::parse(save_file);
     save_file.close();
+    if(saves_json.size() == NULL){
+        std::cout << "No current saves available.\n\n";
+        return;
+    }
+    std::cout << "Current saves: \n\n";
     std::cout << saves_json.dump(1) << "\n";
 
     int id;
     std::cout << "Delete which build? (Provide the int id)\n";
-    std::cin >> id;
+    while(!(std::cin >> id)){
+        std::cout << "Not integer: Select: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     
     int size = saves_json.size();
     if(id > size || id < 0){
@@ -351,7 +412,6 @@ int main() {
                 break;
             default:
                 std::cout << "user choice unsupported\n\n";
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max());
                 break;
         }
     }
