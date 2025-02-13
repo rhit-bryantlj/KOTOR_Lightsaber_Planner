@@ -4,6 +4,9 @@
 
 using json = nlohmann::json;
 
+Lightsaber::Lightsaber(){
+}
+
 Lightsaber::Lightsaber(int saber_sel, int color_sel, int crystal1, int crystal2){
     updateLightsaberType(saber_sel);
     updateColorCrystal(color_sel);

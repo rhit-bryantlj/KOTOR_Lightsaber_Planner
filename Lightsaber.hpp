@@ -27,6 +27,7 @@ class Lightsaber{
 
     public:
         Crystal crystal_1, crystal_2;
+        Lightsaber();
         Lightsaber(int saber_sel, int color_sel, int crystal1, int crystal2);
         void updateLightsaberType(int saber_sel);
         int getTypeVal();

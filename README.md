@@ -1,5 +1,5 @@
 # KOTOR Lightsaber Planner (Command Line)
-## Current Build V1.2
+## Current Build V1.3
 ### See Devlog for past builds / future development plans
 
 ## Description
@@ -25,16 +25,19 @@ This is a Lightsaber Planning Console App for BioWare's 2003 Star Wars Knights o
 #### V1.2 Released
 - Added in Save, Load, and Delete functionality
 - Fixed bug causing infinite loop on string/character input
+#### V1.3 Released
+- Added the ability to equip a second lightsaber
+- When second Lightsaber equipped, update options require choice between saber 1 and 2
 
 follow Development at https://www.youtube.com/@logeeman8
 
 ### Future Development
-- Add option for User to have a second Lightsaber
 - Complete fix to prevent user from going out of bounds on attributes by implementing the 30 point +4 calculation.
+- Add in the option to output the current saved build to an excel sheet (ask for input from users)
 
 ### Future of this Project
 - Create the app in a GUI to be more user friendly
-- Use Qt for C++
+- Use Qt or other framework for C++
 - Upload the App to Github for users to download
 - Upload to Itch.io, Android, Apple (potentially, theres a fee lmao)
 
